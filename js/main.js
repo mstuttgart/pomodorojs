@@ -1,13 +1,12 @@
 'use strict';
 
-const buttonStarStop = document.getElementById('start-stop');
+const buttonStarStop = document.getElementById('btmStartStop');
 
-const buttonPomodoro = document.getElementById('pomodoro');
-const buttonShortBreak = document.getElementById('shortbreak');
-const buttonLongBreak = document.getElementById('longbreak');
+const buttonPomodoro = document.getElementById('btmPomodoro');
+const buttonShortBreak = document.getElementById('btmShortbreak');
+const buttonLongBreak = document.getElementById('btmLongbreak');
 
-const elemMinutes = document.getElementById('minutes');
-const elemSeconds = document.getElementById('seconds');
+const elemPomodoro = document.getElementById('pomodoro');
 
 let intervalID;
 let isTimerRunning;
@@ -32,7 +31,7 @@ resetPomodoro(timer.pomodoro);
  * Reset Pomodoro values and variables
  *
  */
-function resetPomodoro(timer_total){
+function resetPomodoro(timer_total) {
     buttonStarStop.innerText = 'Start';
 
     currentState = timer_total;
@@ -42,14 +41,13 @@ function resetPomodoro(timer_total){
     minutes = timer_total;
     seconds = 0;
 
-    if(intervalID){
+    if (intervalID) {
         clearInterval(intervalID);
         intervalID = 0;
     }
 
     // Initialize HTML minutes and seconds value
-    elemMinutes.innerHTML = `${minutes}`.padStart(2, '0');
-    elemSeconds.innerHTML = `${seconds}`.padStart(2, '0');
+    elemPomodoro.innerHTML = `${minutes}`.padStart(2, '0') + ':' + `${seconds}`.padStart(2, '0');
 }
 
 
@@ -57,12 +55,12 @@ function resetPomodoro(timer_total){
  * Start Pomodoro timer
  *
  */
-function startPomodoro(){
+function startPomodoro() {
     buttonStarStop.innerText = 'Stop';
 
     isTimerRunning = true;
 
-    if(intervalID){
+    if (intervalID) {
         clearInterval(intervalID);
     }
 
@@ -89,8 +87,7 @@ const incremSeconds = () => {
         resetPomodoro();
     }
     else {
-        elemMinutes.innerHTML = `${minutes}`.padStart(2, '0');
-        elemSeconds.innerHTML = `${seconds}`.padStart(2, '0');
+        elemPomodoro.innerHTML = `${minutes}`.padStart(2, '0') + ':' + `${seconds}`.padStart(2, '0');
     }
 
 }
