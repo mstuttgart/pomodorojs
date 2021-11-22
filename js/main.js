@@ -2,6 +2,10 @@
 
 const buttonStarStop = document.getElementById('start-stop');
 
+const buttonPomodoro = document.getElementById('pomodoro');
+const buttonShortBreak = document.getElementById('shortbreak');
+const buttonLongBreak = document.getElementById('longbreak');
+
 const elemMinutes = document.getElementById('minutes');
 const elemSeconds = document.getElementById('seconds');
 
@@ -11,28 +15,32 @@ let isTimerRunning;
 const timer = {
     pomodoro: 25,
     shortBreak: 5,
-    logBreak: 15,
-    longBreak: 4,
+    longBreak: 15,
+    longBreakCount: 4,
 }
 
-let pomodoroMinute;
-let pomodoroSecond;
+let currentState;
+
+let minutes;
+let seconds;
 
 // Init values
-resetPomodoro();
+resetPomodoro(timer.pomodoro);
 
 
 /**
  * Reset Pomodoro values and variables
  *
  */
-function resetPomodoro(){
+function resetPomodoro(timer_total){
     buttonStarStop.innerText = 'Start';
+
+    currentState = timer_total;
 
     isTimerRunning = false;
 
-    pomodoroMinute = timer.pomodoro;
-    pomodoroSecond = 0;
+    minutes = timer_total;
+    seconds = 0;
 
     if(intervalID){
         clearInterval(intervalID);
@@ -40,8 +48,8 @@ function resetPomodoro(){
     }
 
     // Initialize HTML minutes and seconds value
-    elemMinutes.innerHTML = `${pomodoroMinute}`.padStart(2, '0');
-    elemSeconds.innerHTML = `${pomodoroSecond}`.padStart(2, '0');
+    elemMinutes.innerHTML = `${minutes}`.padStart(2, '0');
+    elemSeconds.innerHTML = `${seconds}`.padStart(2, '0');
 }
 
 
@@ -69,25 +77,37 @@ function startPomodoro(){
  */
 const incremSeconds = () => {
 
-    if (pomodoroSecond === 0) {
-        pomodoroMinute -= 1;
-        pomodoroSecond = 59;
+    if (seconds === 0) {
+        minutes -= 1;
+        seconds = 59;
 
     } else {
-        pomodoroSecond -= 1;
+        seconds -= 1;
     }
 
-    if (pomodoroMinute < 0) {
+    if (minutes < 0) {
         resetPomodoro();
     }
     else {
-        elemMinutes.innerHTML = `${pomodoroMinute}`.padStart(2, '0');
-        elemSeconds.innerHTML = `${pomodoroSecond}`.padStart(2, '0');
+        elemMinutes.innerHTML = `${minutes}`.padStart(2, '0');
+        elemSeconds.innerHTML = `${seconds}`.padStart(2, '0');
     }
 
 }
 
 
 buttonStarStop.addEventListener('click', () => {
-    (!isTimerRunning) ? startPomodoro() : resetPomodoro();
+    (!isTimerRunning) ? startPomodoro() : resetPomodoro(currentState);
+});
+
+buttonPomodoro.addEventListener('click', () => {
+    resetPomodoro(timer.pomodoro);
+});
+
+buttonShortBreak.addEventListener('click', () => {
+    resetPomodoro(timer.shortBreak);
+});
+
+buttonLongBreak.addEventListener('click', () => {
+    resetPomodoro(timer.longBreak);
 });
