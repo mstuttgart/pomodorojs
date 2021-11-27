@@ -1,5 +1,65 @@
-header, main {
+html{
+    border-top:4px solid #4F2917;
+}
+
+body{
+    background-color: #F9F3EE;
+}
+
+div{
+    padding: 20px;
+}
+
+header, main, footer {
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: #4F2917;
+    font-family: 'Montserrat', 'sans-serif';
+}
+
+button{
+    border: none;
+    padding: 15px 35px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    border-radius: 4px;
+    transition-duration: 1s;
+}
+
+button:hover{
+    opacity: 0.8;
+}
+
+.pomodoro-clock{
+    font-size: 80px;
+    font-weight: bold;
+    color: #4F2917;
+}
+
+.pomodoro{
+    background-color: #4F2917;
+    color: #ECE0D1;
+}
+
+.shortbreak{
+    background-color: #C78A62;
+    color: #4F2917;
+}
+
+.longbreak{
+    background-color: #FBAE4B;
+    color: #603817;
+}
+
+.worktip{
+    color: #4F2917;
+    font-size: 20px;
+    /* font-style: italic; */
+    padding: 15px 35px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
 }

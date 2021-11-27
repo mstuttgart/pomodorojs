@@ -25,6 +25,9 @@ let seconds;
 
 // Init values
 resetPomodoro(timer.pomodoro);
+// buttonPomodoro.className = "activated";
+// buttonShortBreak.className = "deactivated";
+// buttonLongBreak.className = "deactivated";
 
 
 /**
@@ -92,19 +95,54 @@ const incremSeconds = () => {
 
 }
 
+function enableButton(btm) {
+    if (!btm.classList.contains("activated")) {
+        btm.classList.add("activated");
+    }
+}
+
+function disableButton(btm) {
+    if (btm.classList.contains("activated")) {
+        btm.classList.remove("activated");
+    }
+}
+
 
 buttonStarStop.addEventListener('click', () => {
-    (!isTimerRunning) ? startPomodoro() : resetPomodoro(currentState);
+    if (!isTimerRunning) {
+        startPomodoro();
+        buttonStarStop.classList.remove("btm-start-active");
+    }else{
+        resetPomodoro(currentState);
+        buttonStarStop.classList.add("btm-start-active");
+    }
+
 });
 
 buttonPomodoro.addEventListener('click', () => {
     resetPomodoro(timer.pomodoro);
+
+    enableButton(buttonPomodoro);
+
+    disableButton(buttonShortBreak);
+    disableButton(buttonLongBreak);
+
 });
 
 buttonShortBreak.addEventListener('click', () => {
     resetPomodoro(timer.shortBreak);
+
+    enableButton(buttonShortBreak);
+
+    disableButton(buttonPomodoro);
+    disableButton(buttonLongBreak);
 });
 
 buttonLongBreak.addEventListener('click', () => {
     resetPomodoro(timer.longBreak);
+
+    enableButton(buttonLongBreak);
+
+    disableButton(buttonPomodoro);
+    disableButton(buttonShortBreak);
 });
