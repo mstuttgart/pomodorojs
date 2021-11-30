@@ -1,148 +1,141 @@
 'use strict';
 
-const buttonStarStop = document.getElementById('btmStartStop');
+const buttonToogleTimer = document.getElementById('btmToogleTimer');
 
 const buttonPomodoro = document.getElementById('btmPomodoro');
 const buttonShortBreak = document.getElementById('btmShortbreak');
 const buttonLongBreak = document.getElementById('btmLongbreak');
+
+const elemWorkTip = document.getElementById('workTip');
 
 const elemPomodoro = document.getElementById('pomodoro');
 
 let intervalID;
 let isTimerRunning;
 
-const timer = {
-    pomodoro: 25,
-    shortBreak: 5,
-    longBreak: 15,
-    longBreakCount: 4,
+const sessionDuration = {
+    'pomodoro': {
+        duration: 1500, // (25 mins)
+        tip: 'Time to Focus!'
+    }, 
+    'shortBreak': {
+        duration: 300, // (5 mins)
+        tip: 'Take a break!'
+    }, 
+    'longBreak': {
+        duration: 900,  // (15 mins)
+        tip: 'Take a long break!'
+    }
 }
 
-let currentState;
+let currentSession = 'pomodoro';
+let secondsTimeLeft = sessionDuration['pomodoro'].duration;
 
-let minutes;
-let seconds;
-
-// Init values
-resetPomodoro(timer.pomodoro);
-// buttonPomodoro.className = "activated";
-// buttonShortBreak.className = "deactivated";
-// buttonLongBreak.className = "deactivated";
+resetTimer();
+updateButtonToogleTimerClass(buttonPomodoro);
 
 
 /**
- * Reset Pomodoro values and variables
+ *Update class of toogleTimer button
+ *
+ * @param {*} btm button to copy css class name
+ */
+function updateButtonToogleTimerClass(btm) {
+    buttonToogleTimer.className = btm.className;
+}
+
+
+/**
+ * Update clock seconds and minutes
  *
  */
-function resetPomodoro(timer_total) {
-    buttonStarStop.innerText = 'Start';
+function updateTimer() {
 
-    currentState = timer_total;
+    const seconds = secondsTimeLeft % 60;
+    const minutes = parseInt(secondsTimeLeft / 60);
 
+    let clockText = `${minutes}`.padStart(2, '0') + ':' + `${seconds}`.padStart(2, '0');
+
+    elemPomodoro.innerHTML = clockText;
+    document.title = `PomodoroJS (${clockText})`;
+
+}
+
+
+
+/**
+ * Reset Clock timer and variables
+ *
+ */
+function resetTimer() {
+
+    buttonToogleTimer.innerText = 'Start';
     isTimerRunning = false;
 
-    minutes = timer_total;
-    seconds = 0;
+    secondsTimeLeft = sessionDuration[currentSession].duration;
+    elemWorkTip.innerHTML = sessionDuration[currentSession].tip;
 
-    if (intervalID) {
+
+    if (intervalID)
         clearInterval(intervalID);
-        intervalID = 0;
-    }
 
     // Initialize HTML minutes and seconds value
-    elemPomodoro.innerHTML = `${minutes}`.padStart(2, '0') + ':' + `${seconds}`.padStart(2, '0');
+    updateTimer();
+
 }
 
-
 /**
- * Start Pomodoro timer
+ * Start and stop timer
  *
  */
-function startPomodoro() {
-    buttonStarStop.innerText = 'Stop';
+const toogleTimer = () => {
 
-    isTimerRunning = true;
+    if (!isTimerRunning) {
 
-    if (intervalID) {
-        clearInterval(intervalID);
-    }
+        buttonToogleTimer.innerText = 'Stop';
+        isTimerRunning = true;
 
-    // Init time counter
-    intervalID = setInterval(incremSeconds, 1000);
-}
+        if (intervalID)
+            clearInterval(intervalID);
 
+        // Init time counter
+        intervalID = setInterval(() => {
 
-/**
- * Increment clock seconds and minutes
- *
- */
-const incremSeconds = () => {
+            secondsTimeLeft--;
 
-    if (seconds === 0) {
-        minutes -= 1;
-        seconds = 59;
+            if (secondsTimeLeft >= 0)
+                updateTimer()
 
-    } else {
-        seconds -= 1;
-    }
+            if (secondsTimeLeft == 0) {
+                const audio = new Audio('./sounds/digital.wav');
+                audio.play();
+            }
 
-    if (minutes < 0) {
-        resetPomodoro();
+        }, 1000);
+
     }
     else {
-        elemPomodoro.innerHTML = `${minutes}`.padStart(2, '0') + ':' + `${seconds}`.padStart(2, '0');
-    }
-
-}
-
-function enableButton(btm) {
-    if (!btm.classList.contains("activated")) {
-        btm.classList.add("activated");
-    }
-}
-
-function disableButton(btm) {
-    if (btm.classList.contains("activated")) {
-        btm.classList.remove("activated");
+        resetTimer();
     }
 }
 
 
-buttonStarStop.addEventListener('click', () => {
-    if (!isTimerRunning) {
-        startPomodoro();
-        buttonStarStop.classList.remove("btm-start-active");
-    }else{
-        resetPomodoro(currentState);
-        buttonStarStop.classList.add("btm-start-active");
-    }
-
-});
+buttonToogleTimer.addEventListener('click', toogleTimer);
 
 buttonPomodoro.addEventListener('click', () => {
-    resetPomodoro(timer.pomodoro);
-
-    enableButton(buttonPomodoro);
-
-    disableButton(buttonShortBreak);
-    disableButton(buttonLongBreak);
-
+    currentSession = 'pomodoro';
+    resetTimer();
+    updateButtonToogleTimerClass(buttonPomodoro);
 });
 
 buttonShortBreak.addEventListener('click', () => {
-    resetPomodoro(timer.shortBreak);
-
-    enableButton(buttonShortBreak);
-
-    disableButton(buttonPomodoro);
-    disableButton(buttonLongBreak);
+    currentSession = 'shortBreak';
+    resetTimer();
+    updateButtonToogleTimerClass(buttonShortBreak);
 });
 
 buttonLongBreak.addEventListener('click', () => {
-    resetPomodoro(timer.longBreak);
-
-    enableButton(buttonLongBreak);
-
-    disableButton(buttonPomodoro);
-    disableButton(buttonShortBreak);
+    currentSession = 'longBreak';
+    resetTimer();
+    updateButtonToogleTimerClass(buttonLongBreak);
 });
