@@ -13,27 +13,52 @@ const elemPomodoro = document.getElementById('pomodoro');
 let intervalID;
 let isTimerRunning;
 
-const sessionDuration = {
+const sessionInfo = {
     'pomodoro': {
         duration: 1500, // (25 mins)
-        tip: 'Time to Focus!'
-    }, 
+        tip: 'Time to Focus!',
+        next_action: 'Take a break!',
+    },
     'shortBreak': {
         duration: 300, // (5 mins)
-        tip: 'Take a break!'
-    }, 
+        tip: 'Take a break!',
+        next_action: 'Time to focus! Let`s go!',
+    },
     'longBreak': {
         duration: 900,  // (15 mins)
-        tip: 'Take a long break!'
+        tip: 'Take a long break!',
+        next_action: 'Time to focus! Let`s go!',
     }
 }
 
 let currentSession = 'pomodoro';
-let secondsTimeLeft = sessionDuration['pomodoro'].duration;
+let secondsTimeLeft = sessionInfo['pomodoro'].duration;
+
+// Request notification permission
+if (Notification.permission !== "granted" && Notification.permission !== "denied") {
+    Notification.requestPermission();
+}
 
 resetTimer();
 updateButtonToogleTimerClass(buttonPomodoro);
 
+
+/**
+ *Show notification mensage
+ *
+ */
+function showNotification(mensage) {
+
+    const notification = new Notification("PomodoroJS", {
+       body: mensage,
+    })
+
+    notification.onclick = (e) => {
+       window.location.href = 'https://mstuttgart.github.io/pomodorojs';
+    };
+
+ }
+``
 
 /**
  *Update class of toogleTimer button
@@ -72,8 +97,8 @@ function resetTimer() {
     buttonToogleTimer.innerText = 'Start';
     isTimerRunning = false;
 
-    secondsTimeLeft = sessionDuration[currentSession].duration;
-    elemWorkTip.innerHTML = sessionDuration[currentSession].tip;
+    secondsTimeLeft = sessionInfo[currentSession].duration;
+    elemWorkTip.innerHTML = sessionInfo[currentSession].tip;
 
 
     if (intervalID)
@@ -109,6 +134,8 @@ const toogleTimer = () => {
             if (secondsTimeLeft == 0) {
                 const audio = new Audio('./sounds/digital.wav');
                 audio.play();
+
+                showNotification(sessionInfo[currentSession].next_action);
             }
 
         }, 1000);
