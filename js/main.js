@@ -110,6 +110,24 @@ function resetTimer(current) {
     // Initialize HTML minutes and seconds value
     updateTimer();
 
+    changeFavicon('favicon');
+
+}
+
+
+/**
+ * Change favicon dynamically
+ *
+ * @param {*} faviconFile
+ */
+function changeFavicon(faviconFile) {
+    var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+
+    link.type = 'image/x-icon';
+    link.rel = 'shortcut icon';
+    link.href = `${faviconFile}.ico`;
+
+    document.getElementsByTagName('head')[0].appendChild(link);
 }
 
 /**
@@ -123,10 +141,13 @@ const toogleTimer = () => {
         buttonToogleTimer.innerText = 'Stop';
         isTimerRunning = true;
 
+        changeFavicon('favicon-running');
+
         if (intervalID)
             clearInterval(intervalID);
 
         // Init time counter
+        //TODO move to separate function
         intervalID = setInterval(() => {
 
             secondsTimeLeft--;
@@ -137,6 +158,7 @@ const toogleTimer = () => {
             if (secondsTimeLeft == 0) {
                 const audio = new Audio('./sounds/digital.wav');
                 audio.play();
+                changeFavicon('favicon');
 
                 // Counter pomodoro session to long break
                 if (sessionInfo.current == 'pomodoro') {
