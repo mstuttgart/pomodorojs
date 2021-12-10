@@ -52,8 +52,6 @@ if (Notification.permission !== "granted" && Notification.permission !== "denied
 }
 
 resetTimer('pomodoro');
-// updateButtonToogleTimerClass(buttonPomodoro);
-
 
 /**
  *Show notification mensage
@@ -68,7 +66,6 @@ function showNotification(mensage) {
     notification.onclick = (e) => {
         window.location.href = 'https://mstuttgart.github.io/pomodorojs';
     };
-
 }
 
 
