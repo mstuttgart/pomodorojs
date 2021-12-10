@@ -1,12 +1,12 @@
-html{
-    border-top:4px solid #4F2917;
+html {
+    border-top: 4px solid #002C3E;
 }
 
-body{
-    background-color: #F9F3EE;
+body {
+    background-color: #F7F8F3;
 }
 
-div{
+div {
     padding: 20px;
 }
 
@@ -14,11 +14,13 @@ header, main, footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: #4F2917;
+    color: #002C3E;
     font-family: 'Montserrat', 'sans-serif';
 }
 
-button{
+button {
+    background-color: #78BCC4;
+    color: #002C3E;
     border: none;
     padding: 15px 35px;
     text-align: center;
@@ -26,40 +28,63 @@ button{
     display: inline-block;
     font-size: 20px;
     border-radius: 4px;
-    transition-duration: 1s;
+    transition-duration: 0.5s;
 }
 
-button:hover{
-    opacity: 0.8;
+button:hover {
+    background-color: #F7444E;
+    color: #002C3E;
 }
 
-.pomodoro-clock{
+.active {
+    background-color: #002C3E;
+    color: #F7F8F3;
+}
+
+.pomodoro-clock {
     font-size: 80px;
     font-weight: bold;
-    color: #4F2917;
+    color: #002C3E;
 }
 
-.pomodoro{
-    background-color: #4F2917;
-    color: #ECE0D1;
+
+.buttomToogleTimer {
+    background-color: #002C3E;
+    color: #F7F8F3;
 }
 
-.shortbreak{
-    background-color: #C78A62;
-    color: #4F2917;
-}
-
-.longbreak{
-    background-color: #FBAE4B;
-    color: #603817;
-}
-
-.worktip{
-    color: #4F2917;
+.worktip {
+    color: #002C3E;
     font-size: 20px;
-    /* font-style: italic; */
     padding: 15px 35px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
+}
+
+/* Add a #F7F8F3 background color to the top navigation */
+.topnav {
+    background-color: #F7F8F3;
+    padding-right: 30px;
+    overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    color: #002C3E;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+    color: #F7444E;
+}
+
+/* Right-aligned section inside the top navigation */
+.topnav-right {
+    float: right;
 }

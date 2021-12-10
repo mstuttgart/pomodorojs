@@ -18,14 +18,17 @@ const sessionInfo = {
         'pomodoro': {
             duration: 1500, // (25 mins)
             tip: 'Time to Focus!',
+            btmElem: buttonPomodoro,
         },
         'shortBreak': {
             duration: 300, // (5 mins)
             tip: 'Take a break!',
+            btmElem: buttonShortBreak,
         },
         'longBreak': {
             duration: 900,  // (15 mins)
             tip: 'Take a long break!',
+            btmElem: buttonLongBreak,
         }
     },
     counter: 0,
@@ -39,8 +42,8 @@ if (Notification.permission !== "granted" && Notification.permission !== "denied
     Notification.requestPermission();
 }
 
-resetTimer();
-updateButtonToogleTimerClass(buttonPomodoro);
+resetTimer('pomodoro');
+// updateButtonToogleTimerClass(buttonPomodoro);
 
 
 /**
@@ -61,16 +64,6 @@ function showNotification(mensage) {
 
 
 /**
- *Update class of toogleTimer button
- *
- * @param {Element} btm button to copy css class name
- */
-function updateButtonToogleTimerClass(btm) {
-    buttonToogleTimer.className = btm.className;
-}
-
-
-/**
  * Update clock seconds and minutes
  *
  */
@@ -86,20 +79,21 @@ function updateTimer() {
 
 }
 
-
-
 /**
  * Reset Clock timer and variables
  *
  */
-function resetTimer() {
+function resetTimer(current) {
 
+    sessionInfo.type[sessionInfo.current].btmElem.classList.remove("active");
+    sessionInfo.type[current].btmElem.classList.add("active");
+
+    sessionInfo.current = current
     buttonToogleTimer.innerText = 'Start';
     isTimerRunning = false;
 
     secondsTimeLeft = sessionInfo.type[sessionInfo.current].duration;
     elemWorkTip.innerHTML = sessionInfo.type[sessionInfo.current].tip;
-
 
     if (intervalID)
         clearInterval(intervalID);
@@ -155,7 +149,7 @@ const toogleTimer = () => {
 
     }
     else {
-        resetTimer();
+        resetTimer(sessionInfo.current);
     }
 }
 
@@ -175,9 +169,7 @@ buttonToogleTimer.addEventListener('click', toogleTimer);
 buttonPomodoro.addEventListener('click', () => {
 
     if (askPermission()) {
-        sessionInfo.current = 'pomodoro';
-        resetTimer();
-        updateButtonToogleTimerClass(buttonPomodoro);
+        resetTimer('pomodoro');
     }
 
 });
@@ -185,9 +177,7 @@ buttonPomodoro.addEventListener('click', () => {
 buttonShortBreak.addEventListener('click', () => {
 
     if (askPermission()) {
-        sessionInfo.current = 'shortBreak';
-        resetTimer();
-        updateButtonToogleTimerClass(buttonShortBreak);
+        resetTimer('shortBreak');
     }
 
 });
@@ -195,10 +185,8 @@ buttonShortBreak.addEventListener('click', () => {
 buttonLongBreak.addEventListener('click', () => {
 
     if (askPermission()) {
-        sessionInfo.current = 'longBreak';
-        resetTimer();
+        resetTimer('longBreak');
         sessionInfo.counter = 0;
-        updateButtonToogleTimerClass(buttonLongBreak);
     }
 
 });
