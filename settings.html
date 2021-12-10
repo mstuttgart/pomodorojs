@@ -27,29 +27,31 @@
     </header>
 
     <main>
-        <div id="btms">
-            <button id="btmPomodoro">Pomodoro</button>
-            <button id="btmShortbreak">Short Break</button>
-            <button id="btmLongbreak">Long Break</button>
-        </div>
+
+        <form action="/">
+            
+            <div>
+                <label for="fpomodoro">Pomodoro:</label>
+                <input type="number" id="inputPomodoro" name="fpomodoro" min="1" max="60" value="25"><br>
+
+                <label for="fshortbreak">Short Break:</label>
+                <input type="number" id="inputShortbreak" name="fshortbreak" min="1" max="60" value="5"><br>
+
+                <label for="flongbreak">Long Break:</label>
+                <input type="number" id="inputLongbreak" name="flongbreak" min="1" max="60" value="15">
+            </div>
+        </form>
+
+        <button id="btmSave">Save</button>
 
         <div>
-            <span class="pomodoro-clock" id="pomodoro">00:00</span>
-        </div>
-
-        <div>
-            <button class="buttomToogleTimer" id="btmToogleTimer">Start</button>
-        </div>
-
-        <div>
-            --<span id="workTip" class="worktip">Time to Focus!</span>--
+            <span id="workTip" class="worktip"></span>
         </div>
 
     </main>
 
-
-    <script src="js/main.js"></script>
-
+    <script src="js/settings.js"></script>
+    
 </body>
 
 </html>

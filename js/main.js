@@ -7,26 +7,35 @@ const buttonShortBreak = document.getElementById('btmShortbreak');
 const buttonLongBreak = document.getElementById('btmLongbreak');
 
 const elemWorkTip = document.getElementById('workTip');
-
 const elemPomodoro = document.getElementById('pomodoro');
 
 let intervalID;
 let isTimerRunning;
 
+if (localStorage.getItem('pomodoroValue') === null)
+    localStorage.setItem('pomodoroValue', 1500) // (25 mins)
+
+if (localStorage.getItem('shortBreakValue') === null)
+    localStorage.setItem('shortBreakValue', 300) // (5 mins)
+
+if (localStorage.getItem('longBreakValue') === null)
+    localStorage.setItem('longBreakValue', 900) // (15 mins)
+
 const sessionInfo = {
+
     type: {
         'pomodoro': {
-            duration: 1500, // (25 mins)
+            duration: localStorage.getItem('pomodoroValue'),
             tip: 'Time to Focus!',
             btmElem: buttonPomodoro,
         },
         'shortBreak': {
-            duration: 300, // (5 mins)
+            duration: localStorage.getItem('shortBreakValue'),
             tip: 'Take a break!',
             btmElem: buttonShortBreak,
         },
         'longBreak': {
-            duration: 900,  // (15 mins)
+            duration: localStorage.getItem('longBreakValue'),
             tip: 'Take a long break!',
             btmElem: buttonLongBreak,
         }
