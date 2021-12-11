@@ -1,9 +1,16 @@
+:root {
+    --color1: #002C3E; 
+    --color2: #78BCC4; 
+    --color3: #F7F8F3; 
+    --color4: #F7444E; 
+}
+
 html {
-    border-top: 4px solid #002C3E;
+    border-top: 4px solid var(--color1);
 }
 
 body {
-    background-color: #F7F8F3;
+    background-color: var(--color3);
 }
 
 div {
@@ -13,7 +20,7 @@ div {
 header, footer {
     display: flex;
     flex-direction: column;
-    color: #002C3E;
+    color: var(--color1);
     font-family: 'Montserrat', 'sans-serif';
 }
 
@@ -21,13 +28,13 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: #002C3E;
+    color: var(--color1);
     font-family: 'Montserrat', 'sans-serif';
 }
 
 button {
-    background-color: #78BCC4;
-    color: #002C3E;
+    background-color: var(--color2);
+    color: var(--color1);
     border: none;
     padding: 15px 35px;
     text-align: center;
@@ -39,29 +46,29 @@ button {
 }
 
 button:hover {
-    background-color: #F7444E;
-    color: #002C3E;
+    background-color: var(--color4);
+    color: var(--color1);
 }
 
 .active {
-    background-color: #002C3E;
-    color: #F7F8F3;
+    background-color: var(--color1);
+    color: var(--color3);
 }
 
 .pomodoro-clock {
     font-size: 80px;
     font-weight: bold;
-    color: #002C3E;
+    color: var(--color1);
 }
 
 
 .buttomToogleTimer {
-    background-color: #002C3E;
-    color: #F7F8F3;
+    background-color: var(--color1);
+    color: var(--color3);
 }
 
 .worktip {
-    color: #002C3E;
+    color: var(--color1);
     font-size: 20px;
     padding: 15px 35px;
     text-align: center;
@@ -69,9 +76,9 @@ button:hover {
     display: inline-block;
 }
 
-/* Add a #F7F8F3 background color to the top navigation */
+/* Add a var(--color3) background color to the top navigation */
 .topnav {
-    background-color: #F7F8F3;
+    background-color: var(--color3);
     padding-right: 30px;
     overflow: hidden;
 }
@@ -79,7 +86,7 @@ button:hover {
 /* Style the links inside the navigation bar */
 .topnav a {
     float: left;
-    color: #002C3E;
+    color: var(--color1);
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -88,7 +95,7 @@ button:hover {
 
 /* Change the color of links on hover */
 .topnav a:hover {
-    color: #F7444E;
+    color: var(--color4);
 }
 
 /* Right-aligned section inside the top navigation */
@@ -99,7 +106,7 @@ button:hover {
 form {
     display: flex;
     flex-direction: column;
-    color: #002C3E;
+    color: var(--color1);
     font-family: 'Montserrat', 'sans-serif';
 }
 
@@ -109,11 +116,11 @@ input {
     font-size: 20px;
     margin: 8px 0;
     box-sizing: border-box;
-    border: 1px solid #78BCC4;
-    background-color: #78BCC4;
+    border: 1px solid var(--color2);
+    background-color: var(--color2);
     border-radius: 3px;
 }
 
 input[type=number]:hover {
-    border-color: #F7444E;
+    border-color: var(--color4);
 }
