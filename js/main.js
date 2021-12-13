@@ -138,7 +138,7 @@ const toogleTimer = () => {
         buttonToogleTimer.innerText = 'Stop';
         isTimerRunning = true;
 
-        changeFavicon('favicon-running');
+        changeFavicon('favicon');
 
         if (intervalID)
             clearInterval(intervalID);
