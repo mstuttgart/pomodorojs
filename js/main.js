@@ -156,6 +156,7 @@ const toogleTimer = () => {
                 const audio = new Audio('./sounds/digital.wav');
                 audio.play();
                 changeFavicon('favicon');
+                isTimerRunning = false;
 
                 // Counter pomodoro session to long break
                 if (sessionInfo.current == 'pomodoro') {
