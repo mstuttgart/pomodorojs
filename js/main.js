@@ -9,6 +9,9 @@ const buttonLongBreak = document.getElementById('btmLongbreak');
 const elemWorkTip = document.getElementById('workTip');
 const elemPomodoro = document.getElementById('pomodoro');
 
+// Browser restrict loading resources when tab is inactive
+const audio = new Audio('./sounds/digital.wav');
+
 let intervalID;
 let isTimerRunning;
 
@@ -153,10 +156,10 @@ const toogleTimer = () => {
                 updateTimer()
 
             if (secondsTimeLeft == 0) {
-                const audio = new Audio('./sounds/digital.wav');
-                audio.play();
                 changeFavicon('favicon');
+
                 isTimerRunning = false;
+                audio.play();
 
                 // Counter pomodoro session to long break
                 if (sessionInfo.current == 'pomodoro') {
