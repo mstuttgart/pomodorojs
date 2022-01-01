@@ -62,12 +62,12 @@ resetTimer('pomodoro');
  */
 function showNotification(mensage) {
 
-    const notification = new Notification("PomodoroJS", {
+    const notification = new Notification("Pomodorini", {
         body: mensage,
     })
 
     notification.onclick = (e) => {
-        window.location.href = 'https://mstuttgart.github.io/pomodorojs';
+        window.location.href = 'https://mstuttgart.github.io/pomodorini';
     };
 }
 
@@ -84,7 +84,7 @@ function updateTimer() {
     let clockText = `${minutes}`.padStart(2, '0') + ':' + `${seconds}`.padStart(2, '0');
 
     elemPomodoro.innerHTML = clockText;
-    document.title = `PomodoroJS (${clockText})`;
+    document.title = `Pomodorini (${clockText})`;
 
 }
 
