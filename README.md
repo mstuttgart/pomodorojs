@@ -44,4 +44,4 @@ The original technique has six steps
 Pomodoro™ and Pomodoro Technique® are registered trademarks of Francesco Cirillo. 
 
 
-© 2021 Pomodorini by Michell Stuttgart
+© 2022 Pomodorini by Michell Stuttgart
