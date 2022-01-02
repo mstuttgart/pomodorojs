@@ -1,6 +1,8 @@
 'use strict';
 
 const buttonToogleTimer = document.getElementById('btmToogleTimer');
+const buttonSettingsModal = document.getElementById('openSettingsModal');
+const ButtonAboutModal = document.getElementById('openAboutModal');
 
 const buttonPomodoro = document.getElementById('btmPomodoro');
 const buttonShortBreak = document.getElementById('btmShortbreak');
@@ -8,6 +10,10 @@ const buttonLongBreak = document.getElementById('btmLongbreak');
 
 const elemWorkTip = document.getElementById('workTip');
 const elemPomodoro = document.getElementById('pomodoro');
+
+// Get the modal
+var settingsModal = document.getElementById("settingsmodal");
+var aboutModal = document.getElementById("aboutModal");
 
 // Browser restrict loading resources when tab is inactive
 const audio = new Audio('./sounds/digital.wav');
@@ -25,7 +31,6 @@ if (localStorage.getItem('longBreakValue') === null)
     localStorage.setItem('longBreakValue', 900) // (15 mins)
 
 const sessionInfo = {
-
     type: {
         'pomodoro': {
             duration: localStorage.getItem('pomodoroValue'),
@@ -99,10 +104,12 @@ function resetTimer(current) {
 
     sessionInfo.current = current
     buttonToogleTimer.innerText = 'Start';
+    buttonToogleTimer.className = sessionInfo.type[current].btmElem.className;
     isTimerRunning = false;
 
     secondsTimeLeft = sessionInfo.type[sessionInfo.current].duration;
     elemWorkTip.innerHTML = sessionInfo.type[sessionInfo.current].tip;
+    elemWorkTip.style.color = sessionInfo.type[current].btmElem.style.background;
 
     if (intervalID)
         clearInterval(intervalID);
@@ -223,3 +230,77 @@ buttonLongBreak.addEventListener('click', () => {
 
 });
 
+
+// When the user clicks on the button, open the modal
+buttonSettingsModal.onclick = function () {
+
+    settingsModal.style.display = "block";
+
+    const inputPomodoro = document.getElementById('inputPomodoro');
+    const inputShortbreak = document.getElementById('inputShortbreak');
+    const inputLongbreak = document.getElementById('inputLongbreak');
+
+    // Update inout values. Local Storage values in seconds - convert to minutes
+    inputPomodoro.value = localStorage.getItem('pomodoroValue') / 60;
+    inputShortbreak.value = localStorage.getItem('shortBreakValue') / 60;
+    inputLongbreak.value = localStorage.getItem('longBreakValue') / 60;
+
+
+    /**
+     * Save settings in browser local storage
+     *
+     */
+    // const saveSettings = () => 
+
+    // Update local settings
+    document.getElementById('btmSave').addEventListener('click', () => {
+
+        //saving the values in local storage and convert to seconds
+        localStorage.setItem('pomodoroValue', inputPomodoro.value * 60);
+        localStorage.setItem('shortBreakValue', inputShortbreak.value * 60);
+        localStorage.setItem('longBreakValue', inputLongbreak.value * 60);
+
+        sessionInfo.type['pomodoro'].duration = localStorage.getItem('pomodoroValue');
+        sessionInfo.type['shortBreak'].duration = localStorage.getItem('shortBreakValue');
+        sessionInfo.type['longBreak'].duration = localStorage.getItem('longBreakValue');
+
+        resetTimer('pomodoro');
+
+        settingsModal.style.display = "none";
+
+    });
+
+    // Get the <span> element that closes the modal
+    document.getElementById("cancelModal").addEventListener('click', () => {
+        settingsModal.style.display = "none";
+    });
+    // Get the <span> element that closes the modal
+    document.getElementById("btmClose").addEventListener('click', () => {
+        settingsModal.style.display = "none";
+    });    
+    
+    document.getElementById("background-modal").addEventListener('click', () => {
+        settingsModal.style.display = "none";
+    });
+
+}
+
+// When the user clicks on the button, open the modal
+ButtonAboutModal.onclick = function () {
+
+    aboutModal.style.display = "block";
+
+    // Get the <span> element that closes the modal
+    document.getElementById("closeAboutModal").addEventListener('click', () => {
+        aboutModal.style.display = "none";
+    });
+    // Get the <span> element that closes the modal
+    document.getElementById("btmCloseAboutModal").addEventListener('click', () => {
+        aboutModal.style.display = "none";
+    });    
+    
+    document.getElementById("backgroundAboutModal").addEventListener('click', () => {
+        aboutModal.style.display = "none";
+    });
+
+}

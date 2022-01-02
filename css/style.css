@@ -1,8 +1,10 @@
 :root {
-    --color1: #412b76;
-    --color2: #2ee8b6;
+    --color1: #E8674F;
+    --color2: #F5D17F;
     --color3: #ffffff;
-    --color4: #2ee8b6;
+    --color4: #403D38;
+    --color5: #79B1BC;
+    --color6: #403D38;
 }
 
 html {
@@ -15,60 +17,79 @@ body {
 }
 
 div {
-    padding: 30px;
+    padding: 2px;
 }
 
-header{
+/* header{
     display: flex;
     flex-direction: column;
     color: var(--color1);
-}
+}*/
 
 main {
     display: flex;
     flex-direction: column;
     align-items: center;
     color: var(--color1);
-}
+} 
 
 footer {
-    position: fixed;
+    position: absolute;
     bottom: 0px;
     left: 0px;
     right: 0px;
     width: 100%;
-    color: var(--color1);
+    color: var(--color4);
+    background-color: var(--color6);
     text-align: center;
     font-size: 15px;
+    /* height: 2rem;            
+    margin-top:auto;  */
 }
 
 button {
     background-color: var(--color2);
     color: var(--color1);
-    border: 1px solid var(--color2);
-    padding: 15px 35px;
+    /* border: 1px solid var(--color2); */
+    /* padding: 15px 40px; */
+    /* margin: 2px; */
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 20px;
-    border-radius: 4px;
+    /* border-radius: 4px; */
     transition-duration: 0.5s;
 }
 
-button:hover {
-    border: 1px solid var(--color1);
+a:hover {
+    /* border: none; */
+    text-decoration: none;
+    color: #E8674F;
+    /* color: var(--color1); */
 }
 
+.btm:focus {
+    /* border: none; */
+    text-decoration: none;
+    /* color: var(--color6); */
+}
+
+
+/*
 .active {
     background-color: var(--color1);
     color: var(--color3);
     border: 1px solid var(--color1);
-}
+}*/
 
 .pomodoro-clock {
     font-size: 80px;
     font-weight: bold;
-    color: var(--color1);
+    color: var(--color6);
+}
+
+.card-padding{
+    padding-bottom: 20px;
 }
 
 
@@ -78,8 +99,31 @@ button:hover {
     border: 1px solid var(--color1);
 }
 
+.btm-pomodoro {
+    background-color: var(--color1);
+    color: var(--color3);
+    border: 1px solid var(--color1);
+}
+
+.btm-shortbreak {
+    background-color: var(--color2);
+    color: var(--color3);
+    border: 1px solid var(--color2);
+}
+
+.btm-longbreak {
+    background-color: var(--color5);
+    color: var(--color3);
+    border: 1px solid var(--color5);
+}
+
+.footer-a {
+    background-color: var(--color3);
+}
+
+
 .worktip {
-    color: var(--color1);
+    color: var(--color6);
     font-size: 20px;
     padding: 15px 35px;
     text-align: center;
@@ -88,44 +132,52 @@ button:hover {
 }
 
 /* Add a var(--color3) background color to the top navigation */
-.topnav {
+/* .topnav {
     background-color: var(--color3);
     padding-right: 30px;
     overflow: hidden;
-}
+} */
 
 /* Style the links inside the navigation bar */
-.topnav a {
+/* .topnav a {
     float: left;
     color: var(--color1);
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 20px;
-}
+} */
 
 /* Change the color of links on hover */
-.topnav a:hover {
+/* .topnav a:hover {
     color: var(--color4);
-}
+} */
 
 /* Right-aligned section inside the top navigation */
 .topnav-right {
     float: right;
 }
 
-a:hover {
-    color: var(--color4);
+/* a:hover {
+    color: var(--color1);
+} */
+
+.link {
+    color: var(--color1);
 }
 
-form {
+.link:hover {
+    color: var(--color5);
+}
+
+/* form {
     display: flex;
     flex-direction: column;
     color: var(--color1);
     font-family: 'Montserrat', 'sans-serif';
-}
+} */
 
-input {
+/* input {
     width: 100%;
     padding: 12px 20px;
     font-size: 20px;
@@ -134,12 +186,25 @@ input {
     border: 1px solid var(--color2);
     background-color: var(--color2);
     border-radius: 3px;
-}
+}*/
 
 input[type=number]:hover {
     border-color: var(--color4);
 }
 
-.about_headers{
+.input-pomodoro {
+    color: var(--color1);
+}
+
+.input-shortbreak {
+    color: var(--color2);
+}
+
+.input-longbreak {
+    color: var(--color5);
+}
+
+.about_headers {
     color: var(--color4);
 }
+
