@@ -1,14 +1,14 @@
 <p align="center">
-  <a href="https://github.com/mstuttgart/pomodorini">
+  <a href="https://github.com/mstuttgart/pomodot">
   <img src="assets/pomodoro.png" width="15%"></a>
-  <h4 align="center">Pomodorini</h4>
+  <h4 align="center">Pomodot</h4>
 </p>
 
 <p align="center">
-  <a href="https://mstuttgart.github.io/pomodorini/">
-    <img src="https://img.shields.io/website?color=412b76&style=for-the-badge&up_message=Pomodorini&url=https%3A%2F%2Fmstuttgart.github.io%2Fpomodorojs%2F" alt="Build">
+  <a href="https://mstuttgart.github.io/pomodot/">
+    <img src="https://img.shields.io/website?color=412b76&style=for-the-badge&up_message=Pomodot&url=https%3A%2F%2Fmstuttgart.github.io%2Fpomodorojs%2F" alt="Build">
   </a>
-  <a href="https://github.com/mstuttgart/pomodorini/blob/master/LICENSE">
+  <a href="https://github.com/mstuttgart/pomodot/blob/master/LICENSE">
     <img src="https://img.shields.io/github/license/mstuttgart/dotfiles.svg?style=for-the-badge&color=2ee8b6" alt="License">
   </a>
 </p>
@@ -21,7 +21,7 @@
 
 ## About
 
-Pomodorini is minimal and easy to use Pomodoro Timer to help you manage time and complete your tasks. 
+Pomodot is minimal and easy to use Pomodoro Timer to help you manage time and complete your tasks. 
 
 ### What is **Pomodoro**?
 
@@ -44,4 +44,4 @@ The original technique has six steps
 Pomodoro™ and Pomodoro Technique® are registered trademarks of Francesco Cirillo. 
 
 
-© 2022 Pomodorini by Michell Stuttgart
+© 2022 Pomodot by Michell Stuttgart

@@ -20,21 +20,15 @@ div {
     padding: 2px;
 }
 
-/* header{
-    display: flex;
-    flex-direction: column;
-    color: var(--color1);
-}*/
-
 main {
     display: flex;
     flex-direction: column;
     align-items: center;
     color: var(--color1);
-} 
+}
 
 footer {
-    position: absolute;
+    position: flex;
     bottom: 0px;
     left: 0px;
     right: 0px;
@@ -43,44 +37,30 @@ footer {
     background-color: var(--color6);
     text-align: center;
     font-size: 15px;
-    /* height: 2rem;            
-    margin-top:auto;  */
 }
 
 button {
     background-color: var(--color2);
     color: var(--color1);
-    /* border: 1px solid var(--color2); */
-    /* padding: 15px 40px; */
-    /* margin: 2px; */
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 20px;
-    /* border-radius: 4px; */
     transition-duration: 0.5s;
 }
 
 a:hover {
-    /* border: none; */
     text-decoration: none;
-    color: #E8674F;
-    /* color: var(--color1); */
+    color: var(--color1);
 }
 
 .btm:focus {
-    /* border: none; */
     text-decoration: none;
-    /* color: var(--color6); */
 }
 
-
-/*
-.active {
-    background-color: var(--color1);
-    color: var(--color3);
-    border: 1px solid var(--color1);
-}*/
+.project-name {
+    color: var(--color1);
+}
 
 .pomodoro-clock {
     font-size: 80px;
@@ -88,7 +68,7 @@ a:hover {
     color: var(--color6);
 }
 
-.card-padding{
+.card-padding {
     padding-bottom: 20px;
 }
 
@@ -131,63 +111,6 @@ a:hover {
     display: inline-block;
 }
 
-/* Add a var(--color3) background color to the top navigation */
-/* .topnav {
-    background-color: var(--color3);
-    padding-right: 30px;
-    overflow: hidden;
-} */
-
-/* Style the links inside the navigation bar */
-/* .topnav a {
-    float: left;
-    color: var(--color1);
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 20px;
-} */
-
-/* Change the color of links on hover */
-/* .topnav a:hover {
-    color: var(--color4);
-} */
-
-/* Right-aligned section inside the top navigation */
-.topnav-right {
-    float: right;
-}
-
-/* a:hover {
-    color: var(--color1);
-} */
-
-.link {
-    color: var(--color1);
-}
-
-.link:hover {
-    color: var(--color5);
-}
-
-/* form {
-    display: flex;
-    flex-direction: column;
-    color: var(--color1);
-    font-family: 'Montserrat', 'sans-serif';
-} */
-
-/* input {
-    width: 100%;
-    padding: 12px 20px;
-    font-size: 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: 1px solid var(--color2);
-    background-color: var(--color2);
-    border-radius: 3px;
-}*/
-
 input[type=number]:hover {
     border-color: var(--color4);
 }
@@ -203,8 +126,3 @@ input[type=number]:hover {
 .input-longbreak {
     color: var(--color5);
 }
-
-.about_headers {
-    color: var(--color4);
-}
-

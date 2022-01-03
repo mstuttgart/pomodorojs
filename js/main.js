@@ -2,7 +2,7 @@
 
 const buttonToogleTimer = document.getElementById('btmToogleTimer');
 const buttonSettingsModal = document.getElementById('openSettingsModal');
-const ButtonAboutModal = document.getElementById('openAboutModal');
+const buttonAboutModal = document.getElementById('openAboutModal');
 
 const buttonPomodoro = document.getElementById('btmPomodoro');
 const buttonShortBreak = document.getElementById('btmShortbreak');
@@ -67,12 +67,12 @@ resetTimer('pomodoro');
  */
 function showNotification(mensage) {
 
-    const notification = new Notification("Pomodorini", {
+    const notification = new Notification("Pomodot", {
         body: mensage,
     })
 
     notification.onclick = (e) => {
-        window.location.href = 'https://mstuttgart.github.io/pomodorini';
+        window.location.href = 'https://mstuttgart.github.io/pomodot';
     };
 }
 
@@ -89,7 +89,7 @@ function updateTimer() {
     let clockText = `${minutes}`.padStart(2, '0') + ':' + `${seconds}`.padStart(2, '0');
 
     elemPomodoro.innerHTML = clockText;
-    document.title = `Pomodorini (${clockText})`;
+    document.title = `Pomodot (${clockText})`;
 
 }
 
@@ -232,7 +232,7 @@ buttonLongBreak.addEventListener('click', () => {
 
 
 // When the user clicks on the button, open the modal
-buttonSettingsModal.onclick = function () {
+buttonSettingsModal.onclick = () => {
 
     settingsModal.style.display = "block";
 
@@ -286,7 +286,7 @@ buttonSettingsModal.onclick = function () {
 }
 
 // When the user clicks on the button, open the modal
-ButtonAboutModal.onclick = function () {
+buttonAboutModal.onclick = () => {
 
     aboutModal.style.display = "block";
 
@@ -304,3 +304,30 @@ ButtonAboutModal.onclick = function () {
     });
 
 }
+
+// Add Burger navbar action
+document.addEventListener('DOMContentLoaded', () => {
+
+    // Get all "navbar-burger" elements
+    const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+  
+    // Check if there are any navbar burgers
+    if ($navbarBurgers.length > 0) {
+  
+      // Add a click event on each of them
+      $navbarBurgers.forEach( el => {
+        el.addEventListener('click', () => {
+  
+          // Get the target from the "data-target" attribute
+          const target = el.dataset.target;
+          const $target = document.getElementById(target);
+  
+          // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+          el.classList.toggle('is-active');
+          $target.classList.toggle('is-active');
+  
+        });
+      });
+    }
+  
+  });
