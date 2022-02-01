@@ -1,15 +1,15 @@
 <p align="center">
-  <a href="https://github.com/mstuttgart/pomodot">
+  <a href="https://pomodot.netlify.app/">
   <img src="assets/pomodoro.png" width="15%"></a>
   <h4 align="center">Pomodot</h4>
 </p>
 
 <p align="center">
   <a href="https://mstuttgart.github.io/pomodot/">
-    <img src="https://img.shields.io/website?color=412b76&style=for-the-badge&up_message=Pomodot&url=https%3A%2F%2Fmstuttgart.github.io%2Fpomodorojs%2F" alt="Build">
+    <img src="https://img.shields.io/website?color=E8674F&style=for-the-badge&up_message=Pomodot&url=https%3A%2F%2Fpomodot.netlify.app%2F" alt="Build">
   </a>
   <a href="https://github.com/mstuttgart/pomodot/blob/master/LICENSE">
-    <img src="https://img.shields.io/github/license/mstuttgart/dotfiles.svg?style=for-the-badge&color=2ee8b6" alt="License">
+    <img src="https://img.shields.io/github/license/mstuttgart/dotfiles.svg?style=for-the-badge&color=F5D17F" alt="License">
   </a>
 </p>
 
